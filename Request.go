@@ -15,3 +15,9 @@ func req() func(c *gin.Context) Request {
 		return request
 	}
 }
+
+func newRequest(c *gin.Context) Request {
+	request := req()  //جبت الكلوجر بتاعي
+	req := request(c) // وبعدين  استخدمته واديتله اللي هو محتاجه
+	return req
+}

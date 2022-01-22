@@ -9,9 +9,8 @@ func main() {
 	app := app()
 	application := app() //app ده المتغير مش الفانكشن
 	application.Gin.GET("/ping", func(c *gin.Context) {
-		request := req()
-		req := request(c)
-		req.Context.JSON(200, gin.H{
+		request := newRequest(c)
+		request.Context.JSON(200, gin.H{
 			"message": "pong",
 		})
 	})
