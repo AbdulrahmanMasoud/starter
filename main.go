@@ -12,9 +12,7 @@ func main() {
 	application := app() //app ده المتغير مش الفانكشن
 	application.Gin.GET("/ping", func(c *gin.Context) {
 		request := newRequest(c)
-		request.Ok(gin.H{
-			"message": "created has done",
-		})
+		request.NotAuth()
 	})
 	application.Gin.Run()
 }
