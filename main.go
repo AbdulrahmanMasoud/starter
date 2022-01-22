@@ -1,6 +1,8 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
 
@@ -10,6 +12,7 @@ func main() {
 	application := app() //app ده المتغير مش الفانكشن
 	application.Gin.GET("/ping", func(c *gin.Context) {
 		request := newRequest(c)
+		request.closeConnection() //دي عشان  اقفل الكونكشن بتاع الداتابيز بعد الركوست
 		request.Context.JSON(200, gin.H{
 			"message": "pong",
 		})
