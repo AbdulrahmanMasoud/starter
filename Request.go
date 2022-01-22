@@ -32,6 +32,14 @@ func newRequest(c *gin.Context) Request {
 	return req
 }
 
+// الميثود دي عشان  اوحد الريسبونس اللي راجع
+
+func (req Request) Response(code int, body interface{}) {
+	//هنا اما يرجع الريسبونس يقف الكونكشن بتاع الداتابيز الاول
+	req.closeConnection()
+	req.Context.JSON(code, body)
+}
+
 func connectToDataBase() (*gorm.DB, *sql.DB) {
 	dsn := "masoud:password@tcp(127.0.0.1:3306)/gostarter?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
