@@ -7,7 +7,11 @@ import (
 )
 
 func CreateUser(c *gin.Context) {
-	request := Application.NewRequest(c)
+	request := Application.NewRequest(c).Auth()
+	if !request.IsAuth {
+		request.NotAuth()
+		return
+	}
 	//Create User
 	user := Models.User{
 		Username: "Abdulrahman",
