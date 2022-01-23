@@ -8,3 +8,7 @@ import "github.com/AbdulrahmanMasoud/starter/Application"
 type Router struct {
 	*Application.Application
 }
+
+func (router Router) Routes() {
+	router.visitorsRoute()
+}

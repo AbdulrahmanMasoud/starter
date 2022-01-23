@@ -16,6 +16,6 @@ func main() {
 
 	//Routing
 	router := Routes.Router{Application: &app} //Start Routing
-	router.VisitorsRoute()                     //Get Visitors Routs
+	router.Routes()                            //Get All Routs
 	app.Gin.Run()
 }

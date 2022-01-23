@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (router Router) VisitorsRoute() {
+func (router Router) visitorsRoute() {
 	router.Gin.GET("/user/create", func(c *gin.Context) {
 		request := Application.NewRequest(c)
 		//Create User
