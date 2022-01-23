@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/AbdulrahmanMasoud/starter/Application"
 	"github.com/AbdulrahmanMasoud/starter/Models"
-	"github.com/gin-gonic/gin"
+	"github.com/AbdulrahmanMasoud/starter/Routes"
 )
 
 func main() {
@@ -15,18 +15,7 @@ func main() {
 	Application.CloseConnection(&app)  //Close Connection
 
 	//Routing
-	app.Gin.GET("/user/create", func(c *gin.Context) {
-		request := Application.NewRequest(c)
-		//Create User
-		user := Models.User{
-			Username: "Abdulrahman",
-			Email:    "abdulrahman@mail.com",
-			Password: "masoud",
-		}
-		request.DB.Create(&user) //to create the user
-
-		request.Created(user) //Return Created Response
-
-	})
+	router := Routes.Router{Application: &app} //Start Routing
+	router.VisitorsRoute()                     //Get Visitors Routs
 	app.Gin.Run()
 }
