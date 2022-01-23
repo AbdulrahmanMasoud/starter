@@ -1,4 +1,4 @@
-package main
+package Application
 
 import (
 	"database/sql"
@@ -29,7 +29,7 @@ func req() func(c *gin.Context) Request {
 	}
 }
 
-func newRequest(c *gin.Context) Request {
+func NewRequest(c *gin.Context) Request {
 	request := req()  //جبت الكلوجر بتاعي
 	req := request(c) // وبعدين  استخدمته واديتله اللي هو محتاجه
 	return req
@@ -39,6 +39,6 @@ func newRequest(c *gin.Context) Request {
 
 func (req Request) Response(code int, body interface{}) {
 	//هنا اما يرجع الريسبونس يقف الكونكشن بتاع الداتابيز الاول
-	closeConnection(&req)
+	CloseConnection(&req)
 	req.Context.JSON(code, body)
 }

@@ -1,4 +1,4 @@
-package main
+package Application
 
 import (
 	"database/sql"
@@ -38,7 +38,8 @@ func connectToDataBase(share ShareResources) {
 }
 
 // ميثود في الريكوست عشان اقفل الكونكشن بتاع الداتابيز عشان طبعا كل داتا بيز وليها ليمت معين للكونكشن
-func closeConnection(share ShareResources) {
+
+func CloseConnection(share ShareResources) {
 	switch share.(type) {
 	case *Application:
 		app := share.(*Application)
