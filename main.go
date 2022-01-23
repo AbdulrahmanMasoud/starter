@@ -15,9 +15,18 @@ func main() {
 	Application.CloseConnection(&app)  //Close Connection
 
 	//Routing
-	app.Gin.GET("/ping", func(c *gin.Context) {
+	app.Gin.GET("/user/create", func(c *gin.Context) {
 		request := Application.NewRequest(c)
-		request.NotAuth()
+		//Create User
+		user := Models.User{
+			Username: "Abdulrahman",
+			Email:    "abdulrahman@mail.com",
+			Password: "masoud",
+		}
+		request.DB.Create(&user) //to create the user
+
+		request.Created(user) //Return Created Response
+
 	})
 	app.Gin.Run()
 }
